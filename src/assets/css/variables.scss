@@ -1,0 +1,13 @@
+/*========== color ==========*/
+$color-primary: #f2d7a4;
+
+@mixin gradient-primary(){
+  background: #fff1d0;
+  background: -moz-linear-gradient(top,  #fff1d0 0%, #fff1d0 45%, #fdefce 48%, #eeddba 60%, #c1a77e 85%, #b79b70 92%, #ae9064 100%);
+  background: -webkit-linear-gradient(top,  #fff1d0 0%,#fff1d0 45%,#fdefce 48%,#eeddba 60%,#c1a77e 85%,#b79b70 92%,#ae9064 100%);
+  background: linear-gradient(to bottom,  #fff1d0 0%,#fff1d0 45%,#fdefce 48%,#eeddba 60%,#c1a77e 85%,#b79b70 92%,#ae9064 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff1d0', endColorstr='#ae9064',GradientType=0 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
