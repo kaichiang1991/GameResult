@@ -1,0 +1,86 @@
+{
+  "en":{
+    "DateTime":"Date & Time",
+    "TotalWin":"Total Win",
+    "StartDate":"Start Time",
+    "EndDate":"End Time",
+    "SearchDate":"Search Date",
+    "IDSearch":"ID Search",
+    "BetPrompt":"Reserve Near 7 Days records",
+    "Search":"Search",
+    "To":"To",
+    "nodata": "No data"
+  },
+  "tw":{
+    "DateTime":"時間日期",
+    "TotalWin":"總贏分",
+    "StartDate":"開始日期",
+    "EndDate":"結束日期",
+    "SearchDate":"日期查找",
+    "IDSearch":"單號查找",
+    "BetPrompt":"保留近7日內紀錄",
+    "Search":"搜尋",
+    "To":"至",
+    "nodata": "無資料"
+  },
+  "zh-cn":{
+    "DateTime":"时间日期",
+    "TotalWin":"总赢分",
+    "StartDate":"开始日期",
+    "EndDate":"结束日期",
+    "SearchDate":"日期查找",
+    "IDSearch":"单号查找",
+    "BetPrompt":"保留近7日内纪录",
+    "Search":"搜寻",
+    "To":"至",
+    "nodata": "无资料"
+  },
+  "id":{
+    "DateTime":"Tanggal & Waktu",
+    "TotalWin":"Total poin kemenangan",
+    "StartDate":"Tanggal mulai",
+    "EndDate":"Tanggal berakhir",
+    "SearchDate":"Pencarian tanggal",
+    "IDSearch":"Pencarian ID",
+    "BetPrompt":"Simpan catatan dalam 7 hari",
+    "Search":"Pencarian",
+    "To":"sampai",
+    "nodata": "Tidak ada data"
+  },
+  "ko":{
+    "DateTime":"시간 날짜",
+    "TotalWin":"총 윈 포인트",
+    "StartDate":"시작시간",
+    "EndDate":"종료날짜",
+    "SearchDate":"날짜 검색",
+    "IDSearch":"ID 검색",
+    "BetPrompt":"7일 내의 기록 보류",
+    "Search":"검색",
+    "To":"까지",
+    "nodata": "데이터 없음"
+  },
+  "th":{
+    "DateTime":"เวลาและวันที่",
+    "TotalWin":"คะแนนชนะโดยรวม",
+    "StartDate":"วันที่เริ่ม",
+    "EndDate":"วันที่สิ้นสุด",
+    "SearchDate":"ค้นหาวันที่",
+    "IDSearch":"ค้นหา ไอดี",
+    "BetPrompt":"เก็บบันทึกภายใน 7 วันที่ผ่านมา",
+    "Search":"ค้นหา",
+    "To":"ไปยัง",
+    "nodata": "ไม่มีข้อมูล"
+  },
+  "vi":{
+    "DateTime":"Ngày giờ",
+    "TotalWin":"Tổng điểm thắng",
+    "StartDate":"Bắt đầu ngày tháng",
+    "EndDate":"Ngừng lại ngày tháng",
+    "SearchDate":"Ngày tháng Kiểm tra",
+    "IDSearch":"Tìm kiếm số đơn",
+    "BetPrompt":"Lưu hồ sơ 7 ngày gần nhất",
+    "Search":"Tìm kiếm",
+    "To":"Tới",
+    "nodata": "Không có thông tin"
+  }
+}

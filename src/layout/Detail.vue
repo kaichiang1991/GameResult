@@ -1,6 +1,6 @@
 <template>
   <div id="detail">
-    Detail....
+    detail....{{ gameMode }}....{{ rowData }}
   </div>
 </template>
 
@@ -9,10 +9,14 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Detail',
+  props:{
+    rowData:{}
+  },
   computed: {
     ...mapState({
       gameID: state => state.gameID,
       language: state => state.language,
+      gameMode: state => state.gameMode,
     }),
   },
   methods: {
@@ -21,6 +25,7 @@ export default {
   mounted(){
   },
   created(){
+    // console.log('rowData-->', this.rowData)
   }
 }
 </script>

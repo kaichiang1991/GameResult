@@ -2,26 +2,20 @@
   <Main></Main>
 </template>
 
-<i18n src="@/lang/BN54.json"></i18n>
 <script>
 import Main from '@/layout/Main'
 
 export default {
-  name: 'BN54',
+  name: 'BN65',
   components: {
     Main
   },
   data(){
     return{
-      gameToken: '',
-      gameMode: 'slot', // 細單模式：老虎機(slot), 魚機(fish)....
+      gameMode: 'fish' // 設定專案模式
     }
   },
-  methods:{
-  },
   created(){
-    /** 專案初始化設定 */
-    this.$store.commit('SET_GAMETOKEN', this.gameToken);
     this.$store.commit('SET_GAMEMODE', this.gameMode);
   }
 }

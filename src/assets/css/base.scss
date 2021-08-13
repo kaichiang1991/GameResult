@@ -17,7 +17,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: initial;
+	font-size: inherit;
 	vertical-align: baseline;
 }
 article, aside, details, figcaption, figure, 
@@ -46,16 +46,17 @@ table {
   box-sizing: border-box;
 }
 
-
 /*========== Base ==========*/
 html,body{
   width: 100%;
   height: 100%;
 }
+
 body {
+	font-size: $fz-primary;
   color: #fff;
 	background: #000;
-  font-family: '微軟正黑體', '新細明體', sans-serif;
+  font-family: $fz-family;
 }
 
 // close
@@ -71,21 +72,31 @@ body {
 	}
 }
 
-// scroll
-::-webkit-scrollbar {
-	width: 5px;
+// loader
+#loader{
+  position: fixed;
+  text-align: center;
+  display: block;
+  background: no-repeat center center rgba(0,0,0,.5);
+  background-attachment: fixed;
+  background-size: 40px 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+	background-image: url(~@img/loading.svg);
 }
-::-webkit-scrollbar-track {
-	background: transparent;
-}
-::-webkit-scrollbar-thumb {
-	background: #222;
-}
-::-webkit-scrollbar-thumb:hover {
-	background: #333; 
+
+// main
+#main{
+	width: 87.5%;
+	height: 100%;
+	margin: 0 auto;
 }
 
 /*========== global ==========*/
+// image
 img{
 	max-width: 100%;
 	height: auto;
@@ -107,11 +118,87 @@ img{
 .txt-center{
 	text-align: center;
 }
+.txt-right{
+	text-align: right;
+}
+.txt-underline{
+	text-decoration: underline;
+}
+.title{
+	text-align: center;
+	font-size: $fz-title;
+	font-weight: bold;
+	// color: $color-primary;
+}
+
+// scroll
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #222;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #333; 
+}
+
+// color
+.gradient-gary{
+	@include gradient-gary;
+}
+
+/*========== component ==========*/
+// form style
+.form-style{
+	display: block;
+	>li{
+		padding: .5em 0;
+	}
+	// element UI
+	.el-button{
+		padding: 0 15px;
+		// text-transform: uppercase;
+		font-size: initial;
+	}
+}
+
+/*========== plugin ==========*/
+// element UI
+.el-input{
+	width: auto;
+	margin: 0 .5em;
+	.el-input__inner{
+		height: $inputH;
+		line-height: $inputH;
+		border: none;
+	}
+	.el-input__icon{
+		line-height: $inputH;
+	}
+}
+
+.el-button{
+	border: none;
+	line-height: $inputH;
+	transition: all .4s;
+	&.gary{
+		background: $color-gary !important;
+		color: #fff;
+		&:not(.is-disabled):hover{
+			background: darken($color-primary,15%) !important;
+		}
+	}
+}
 
 /*========== RWD ==========*/
 @media screen and (max-width: 1000px){
 	html,body{
 		height: auto;
-
+	}
+	#main{
+		width: auto;
 	}
 }

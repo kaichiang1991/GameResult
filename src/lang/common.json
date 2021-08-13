@@ -1,8 +1,37 @@
 {
   "en":{
-    "paytable": "Paytable"
+    "BetHistory": "Bet History",
+    "RoundID":"Round Num",
+    "BetTotal":"Total Bet"
+  },
+  "tw":{
+    "BetHistory": "投注紀錄",
+    "RoundID":"單號",
+    "BetTotal":"投注額"
   },
   "cn":{
-    "paytable": "赔附表"
+    "BetHistory": "投注纪录",
+    "RoundID":"单号",
+    "BetTotal":"投注额"
+  },
+  "id":{
+    "BetHistory": "Catatan taruhan",
+    "RoundID":"单号",
+    "BetTotal":"投注额"
+  },
+  "ko":{
+    "BetHistory": "베팅 기록",
+    "RoundID":"ID번호",
+    "BetTotal":"베팅 금액"
+  },
+  "th":{
+    "BetHistory": "บันทึกการเดิมพัน",
+    "RoundID":"ปัดเศษ ไอดี",
+    "BetTotal":"คะแนนเดิมพันโดยรวม"
+  },
+  "vi":{
+    "BetHistory": "Lịch sử đặt cược",
+    "RoundID":"Số đơn",
+    "BetTotal":"Tổng số đặt cược"
   }
 }

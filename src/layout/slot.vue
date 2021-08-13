@@ -1,24 +1,21 @@
 <template>
   <div id="slot">
-    <keep-alive>
-      <component :is="comp"></component>
-    </keep-alive>
+    slot.....
   </div>
 </template>
 
 <script>
-import { List, Detail } from '@components'
 // import { mapState } from 'vuex'
 
 export default {
   name: 'SlottGame',
   components: {
-    List,
-    Detail
+
+  },
+  props: {
   },
   data(){
     return{
-      comp: 'Detail' // List, Detail
     }
   },
   computed: {
@@ -28,12 +25,6 @@ export default {
     // }),
   },
   methods: {
-    close(){
-      // parent.EventHandler.dispatch(parent.eEventName.closeWindow)
-    },
-    change(goto){
-      this.comp = goto
-    }
   },
   mounted(){
   },

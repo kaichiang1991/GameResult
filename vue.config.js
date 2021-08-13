@@ -21,7 +21,17 @@ module.exports = {
   lintOnSave: true,
   publicPath: './',
   outputDir: './dist',
-  devServer: {},
+  devServer: {
+    proxy: {
+      [process.env.VUE_APP_BASE_API]: {
+        target: process.env.VUE_APP_PROXY_API,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: '',
+        },
+      },
+    },
+  },
   productionSourceMap: process.env.NODE_ENV !== 'production',
   configureWebpack: {
     resolve: {
@@ -29,11 +39,6 @@ module.exports = {
         '@css': resolve(`src/assets/css`),
         '@img': resolve(`src/assets/images`),
         '@data': resolve(`src/assets/data`),
-        '@project': resolve(`src/project`),
-        '@layout': resolve(`src/layout`),
-        '@components': resolve(`src/components`),
-        '@utils': resolve(`src/utils`),
-        '@lang': resolve(`src/lang`)
       }
     },
     // splitChunks:分割公用模組
@@ -46,6 +51,11 @@ module.exports = {
             priority: -10,
             chunks: 'initial',
             minChunks: 2
+          },
+          elementUI: {
+            name: 'chunk-elementUI', // split elementUI into a single package
+            priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+            test: /[\\/]node_modules[\\/]_?element-ui(.*)/, // in order to adapt to cnpm
           },
           common: {
             name: 'chunk-common',

@@ -3,27 +3,20 @@ import Vuex from 'vuex'
 import { mutations } from './mutations'
 import getters from './getter'
 import * as actions from './action'
+import { baseInfo } from '@/utils/baseInfo'
 
 Vue.use( Vuex );
 
-// 設定基本初始值
-let gameCode, gameLanguage;
-const baseInfo = ()=>{
-  if(!parent.Entry){
-    gameCode = window.location.pathname.split('/')[1].split('.html')[0]
-    gameLanguage = 'zh-cn'
-  }else{
-    gameCode = parent.Entry.getDetail.gameCode
-    gameLanguage = parent.Entry.getDetail.gameLanguage
-  }
-}
-baseInfo()
+const { gameCode, gameLanguage, apiURL, contentView } = baseInfo(); // 取得基本初始值
 
-//state
 export const state = {
-  view: null,
   gameID: gameCode,
+  gameToken: null,
   language: gameLanguage,
+  loading: false,
+  apiURL: apiURL,
+  gameMode: null, // 細單模式(例：slot, fish...)
+  contentView: contentView, // 顯示模式：列表(List), 詳細頁(Detail)
 }
 
 export default new Vuex.Store({

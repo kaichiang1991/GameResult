@@ -1,7 +1,7 @@
 // import Vue from 'vue'
 // import VueRouter from 'vue-router'
 // // import Layout from '@/layout'
-// import i18n from '@lang'
+// import i18n from '@/lang'
 // import Store from '@/store'
 
 // const { gameID, language } = Store.getters
@@ -12,7 +12,7 @@
 //   let messages = {}
 //   const allPromise = ['common', gameID].map(name =>{
 //     return new Promise(res => {
-//       const data = require(`@lang/${language}/${name}.json`)
+//       const data = require(`@/lang/${language}/${name}.json`)
 //       Object.assign(messages, data)
 //       res()
 //     })

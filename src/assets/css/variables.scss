@@ -1,5 +1,6 @@
 /*========== color ==========*/
-$color-primary: #f2d7a4;
+$color-primary: #ffc336;
+$color-gary: #333;
 
 @mixin gradient-primary(){
   background: #fff1d0;
@@ -11,3 +12,34 @@ $color-primary: #f2d7a4;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
 }
+
+@mixin gradient-gary(){
+  background: #181818;
+  background: mozlinear-gradient(top,  #181818 0%, #060606 100%);
+  background: -webkit-linear-gradient(top,  #181818 0%,#060606 100%);
+  background: linear-gradient(to bottom,  #181818 0%,#060606 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#181818', endColorstr='#060606',GradientType=0 );
+  border-top: 1px solid #191919;
+  border-bottom: 1px solid #191919;
+  border-image: linear-gradient(to bottom, rgb(95, 95, 95) 0%, rgb(29, 29, 29) 100%);
+  border-image-slice: 1;
+}
+
+/*========== font ==========*/
+$fz-family: '微軟正黑體', sans-serif;
+
+$fz-primary: 18px;
+$fz-title: 30px;
+$fz-sub: 22px;
+$fz-min: 16px;
+
+// $fz-primary-mid: 6.333vmin;
+// $fz-title-mid: 8vmin;
+// $fz-sub-mid: 4.666vmin;
+
+// $fz-primary-min: 16px;
+// $fz-title-min: 24px;
+// $fz-sub-min: 15px;
+
+/*========== form ==========*/
+$inputH : 35px;
