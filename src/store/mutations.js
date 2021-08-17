@@ -26,5 +26,5 @@ export const mutations = {
   /** 設定API URL */
   SET_API_URL: (state, url)=>{
     state.apiURL = url
-  }
+  },
 }

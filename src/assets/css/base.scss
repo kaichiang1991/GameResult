@@ -151,19 +151,7 @@ img{
 }
 
 /*========== component ==========*/
-// form style
-.form-style{
-	display: block;
-	>li{
-		padding: .5em 0;
-	}
-	// element UI
-	.el-button{
-		padding: 0 15px;
-		// text-transform: uppercase;
-		font-size: initial;
-	}
-}
+
 
 /*========== plugin ==========*/
 // element UI
@@ -199,6 +187,6 @@ img{
 		height: auto;
 	}
 	#main{
-		width: auto;
+		width: 95%;
 	}
 }

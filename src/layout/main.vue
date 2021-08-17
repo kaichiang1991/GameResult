@@ -1,8 +1,8 @@
 <template>
   <div id="main">
     <a id="close" @click.prevent="close()"><img src="~@img/close.png" alt=""></a>
-    <keep-alive>
-      <component :is="contentView" :rowData="rowData" @changeView="changeView"></component>
+    <keep-alive include="List">
+      <component :is="contentView" :infoData="infoData" :rowData="rowData" @changeView="changeView"></component>
     </keep-alive>
     <div v-if="loading" id="loader"></div>
   </div>
@@ -12,7 +12,7 @@
 import { mapState } from 'vuex'
 import List from '@/layout/List'
 import Detail from '@/layout/Detail'
-// import store from '@/store'
+
 
 export default {
   name: 'Main',
@@ -22,18 +22,8 @@ export default {
   },
   data(){
     return{
-      rowData: {},
-      currencyList: {
-        1: 'CNY', // 人民幣
-        2: 'VND', // 越南盾
-        3: 'MYR', // 馬來西亞令吉
-        4: 'THB', // 泰銖
-        5: 'TWD', // 新台幣
-        6: 'VNDK', // 越南盾(K)
-        7: 'OTHER', //泰銖
-        8: 'IDR', //印尼盾
-        9: 'KRW', //韓元
-      },
+      infoData: null,
+      rowData: null,
     }
   },
   computed: {
@@ -43,8 +33,10 @@ export default {
     }),
   },
   methods: {
+    /** 設定顯示模式 */
     changeView(obj){
-      this.rowData = obj.data
+      this.infoData = obj.info
+      this.rowData = obj.row
       this.$store.commit('SET_CONTENT_VIEW', obj.view);
     },
     /** 關閉按鈕 */
@@ -59,6 +51,7 @@ export default {
     },
   },
   created(){
+    
   }
 }
 </script>

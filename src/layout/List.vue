@@ -45,7 +45,7 @@
           <li>{{ $t('TotalWin') }}</li>
         </ul>
         <ol class="_list" :data-none="$t('nodata')">
-          <li v-for="(item, key) in dataList" :key="key" class="item" @click="$emit('changeView', { view:'Detail', data: item })">
+          <li v-for="(item, key) in dataList" :key="key" class="item" @click="$emit('changeView', { view:'Detail', row: item, info: { userName, gameName, currency } })">
             <div :data-label="$t('RoundID')"><span class="txt-underline">{{ item.round_code }}</span></div>
             <div :data-label="$t('DateTime')"><span>{{ item.bet_time }}</span></div>
             <div :data-label="$t('BetTotal')"><span>{{ item.bet }}</span></div>
@@ -71,6 +71,7 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import { getList } from '@/api/list'
+import { timeFormat, getGameName } from '@/utils/common'
 
 export default {
   name: 'List',
@@ -78,10 +79,9 @@ export default {
   },
   data(){
     return{
-      /** 使用者資訊 */
-      info:{
-        account: null,
-      },
+      userName: null, // 玩家帳號
+      gameName: null, // 遊戲名稱
+      currency: null, // 幣種
       /** 搜尋條件 */
       condition:{
         searchType: 1, // 搜尋模式：單號查詢(0)、日期查詢(1)
@@ -111,36 +111,41 @@ export default {
   },
   computed: {
     ...mapState({
-      gameID: state => state.gameID,
-      language: state => state.language,
       gameToken: state => state.gameToken,
+      gameID: state => state.gameID,
+      language: state => state.language
     }),
   },
   methods: {
     /** 格式化資訊 */
-    dataFormat(res) {
-      if(!res.spin_summarys){
-        this.clearData()
-        return false
+    async dataFormat(res) {
+      if(!this.userName){
+        this.userName = res.user_name
+        this.gameName = await getGameName(this.gameID, this.language)
       }
-      const data = res.spin_summarys.slice(0)
-      data.map(v=>{
-        v.bet_time = moment((v.bet_time)*1000).utcOffset(-240).format()
+
+      this.currency = res.currency_id // 幣種
+
+      // 列表資料
+      const rowlist = res.spin_summarys.slice(0)
+      rowlist.map(v=>{
+        v.bet_time = timeFormat(v.bet_time)
+        v.end_time = timeFormat(v.end_time)
+        // money_fraction_multiple：錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
         v.bet = v.bet / res.money_fraction_multiple
         v.win = v.win / res.money_fraction_multiple
       })
+      
+      this.pagination.listTotal = Math.ceil(res.total_count / this.pagination.intPerPage) // 總頁數
 
-      this.pagination.listTotal = Math.ceil(res.total_count / this.pagination.intPerPage)
-      this.info.account = data.user_name
-
-      return data
+      return rowlist
     },
     /** 清除資料 */
     clearData(){
       this.pagination.listTotal = 0
+      this.currency = null
       this.dataList = {}
       this.pagination.currPage = 1
-      this.info.account = null
     },
     /** 取得列表(日期) */
     async getListByDate(start, end){
@@ -163,7 +168,13 @@ export default {
       }
 
       const data = await getList(params)
-      this.dataList = this.dataFormat(data)
+      if(!data.spin_summarys){
+        this.clearData()
+      }else{
+        const rowlist = await this.dataFormat(data)
+        this.dataList = rowlist
+      }
+
     },
     /** 日期搜尋 */
     searchListByDate(){      
@@ -193,7 +204,12 @@ export default {
       }
 
       const data = await getList(params)
-      this.dataList = this.dataFormat(data)
+      if(!data.spin_summarys){
+        this.clearData()
+      }else{
+        const rowlist = await this.dataFormat(data)
+        this.dataList = rowlist
+      }
     },
     prevPage() {
       this.pagination.currPage -=1
@@ -214,7 +230,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/** Layout */
+/**----- Layout -----*/
 #list{
   height: 100%;
   .header{
@@ -276,7 +292,22 @@ export default {
   }
 }
 
-/** UI */
+/**----- UI -----*/
+// form style
+.form-style{
+	display: block;
+	>li{
+		padding: .5em 0;
+	}
+	// element UI
+	.el-button{
+		padding: 0 15px;
+		// text-transform: uppercase;
+		font-size: initial;
+	}
+}
+
+// data list
 .data-list{
   text-align: center;
   ._head{

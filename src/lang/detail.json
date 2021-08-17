@@ -1,0 +1,93 @@
+{
+  "en":{
+    "DetailTitle":"GameDetail",
+    "Game":"Game",
+    "UserAccount":"User Account",
+    "AgentAccount":"Agent Account",
+    "Denom":"Denom",
+    "Currency":"Currency",
+    "RoundDetail":"Round Detail",
+    "time":"Time",
+    "conduct":"Conduct",
+    "amount":"Amount",
+    "":""
+  },
+  "tw":{
+    "DetailTitle":"遊戲細單",
+    "Game":"遊戲",
+    "UserAccount":"玩家帳號",
+    "AgentAccount":"代理帳號",
+    "Denom":"投注比例",
+    "Currency":"幣別",
+    "RoundDetail":"遊戲結果",
+    "time":"時間",
+    "conduct":"行為",
+    "amount":"金額",
+    "":""
+  },
+  "zh-cn":{
+    "DetailTitle":"游戏细单",
+    "Game":"游戏",
+    "UserAccount":"玩家账号",
+    "AgentAccount":"代理账号",
+    "Denom":"投注比例",
+    "Currency":"币别",
+    "RoundDetail":"游戏结果",
+    "time":"时间",
+    "conduct":"行为",
+    "amount":"金额",
+    "":""
+  },
+  "id":{
+    "DetailTitle":"Detail permainan",
+    "Game":"Permainan",
+    "UserAccount":"Akun pemain",
+    "AgentAccount":"Akun agen",
+    "Denom":"Rasio taruhan",
+    "Currency":"Mata uang",
+    "RoundDetail":"Hasil Permainan",
+    "time":"Waktu",
+    "conduct":"Kegiatan",
+    "amount":"Jumlah",
+    "":""
+  },
+  "ko":{
+    "DetailTitle":"게임 상세 내역",
+    "Game":"게임",
+    "UserAccount":"유저 계좌",
+    "AgentAccount":"에이전트 계좌",
+    "Denom":"베팅 비율",
+    "Currency":"화폐",
+    "RoundDetail":"게임결과",
+    "time":"시간",
+    "conduct":"행위",
+    "amount":"금액",
+    "":""
+  },
+  "th":{
+    "DetailTitle":"รายละเอียดเกม",
+    "Game":"เกม",
+    "UserAccount":"บัญชีผู้เล่น",
+    "AgentAccount":"บัญชีตัวแทน",
+    "Denom":"อัตราส่วนการเดิมพัน",
+    "Currency":"เงินตรา",
+    "RoundDetail":"ผลลัพธ์ของเกม",
+    "time":"เวลา",
+    "conduct":"พฤติกรรม",
+    "amount":"จำนวนเงิน",
+    "":""
+  },
+  "vi":{
+    "DetailTitle":"Chi tiết trò chơi",
+    "Game":"Trò chơi",
+    "UserAccount":"Tài khoản người chơi",
+    "AgentAccount":"Tài khoản đại lý",
+    "Denom":"Tỷ lệ đặt cược",
+    "Currency":"Tiền tệ",
+    "RoundDetail":"Kết quả trò chơi",
+    "time":"Thời gian",
+    "conduct":"Hành vi",
+    "amount":"Số tiền",
+    "":""
+  }
+}

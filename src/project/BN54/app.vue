@@ -14,7 +14,7 @@ export default {
   data(){
     return{
       gameToken: '',
-      gameMode: 'slot', // 細單模式：老虎機(slot), 魚機(fish)....
+      gameMode: 'Slot', // 細單模式：老虎機(Slot), 魚機(Fish)....
     }
   },
   methods:{

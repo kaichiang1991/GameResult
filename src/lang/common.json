@@ -1,37 +1,44 @@
 {
-  "en":{
+  "en": {
     "BetHistory": "Bet History",
-    "RoundID":"Round Num",
-    "BetTotal":"Total Bet"
+    "RoundID": "Round Num",
+    "BetTotal": "Total Bet",
+    "WinTotal": "Total Win"
   },
-  "tw":{
+  "tw": {
     "BetHistory": "投注紀錄",
-    "RoundID":"單號",
-    "BetTotal":"投注額"
+    "RoundID": "單號",
+    "BetTotal": "投注額",
+    "WinTotal": "贏分"
   },
-  "cn":{
+  "cn": {
     "BetHistory": "投注纪录",
-    "RoundID":"单号",
-    "BetTotal":"投注额"
+    "RoundID": "单号",
+    "BetTotal": "投注额",
+    "WinTotal": "赢分"
   },
-  "id":{
+  "id": {
     "BetHistory": "Catatan taruhan",
-    "RoundID":"单号",
-    "BetTotal":"投注额"
+    "RoundID": "ID",
+    "BetTotal": "Total taruhan",
+    "WinTotal": "Total poin kemenangan"
   },
-  "ko":{
+  "ko": {
     "BetHistory": "베팅 기록",
-    "RoundID":"ID번호",
-    "BetTotal":"베팅 금액"
+    "RoundID": "ID번호",
+    "BetTotal": "베팅 금액",
+    "WinTotal": "총 윈 포인트"
   },
-  "th":{
+  "th": {
     "BetHistory": "บันทึกการเดิมพัน",
-    "RoundID":"ปัดเศษ ไอดี",
-    "BetTotal":"คะแนนเดิมพันโดยรวม"
+    "RoundID": "ปัดเศษ ไอดี",
+    "BetTotal": "คะแนนเดิมพันโดยรวม",
+    "WinTotal": "คะแนนชนะ"
   },
-  "vi":{
+  "vi": {
     "BetHistory": "Lịch sử đặt cược",
-    "RoundID":"Số đơn",
-    "BetTotal":"Tổng số đặt cược"
+    "RoundID": "Số đơn",
+    "BetTotal": "Tổng số đặt cược",
+    "WinTotal": "Điểm thắng"
   }
 }

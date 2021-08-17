@@ -15,8 +15,8 @@ export const state = {
   language: gameLanguage,
   loading: false,
   apiURL: apiURL,
-  gameMode: null, // 細單模式(例：slot, fish...)
-  contentView: contentView, // 顯示模式：列表(List), 詳細頁(Detail)
+  gameMode: null, // 細單模式：slot、fish...
+  contentView: contentView, // 顯示模式：列表(List)、詳細頁(Detail)
 }
 
 export default new Vuex.Store({

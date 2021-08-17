@@ -10,7 +10,7 @@ export function baseInfo() {
   const server = params.get("s");
 
   if(!server){
-    if(process.env.VUE_APP_ENV === 'development'){
+    if(process.env.NODE_ENV === 'development'){
       // 本地開發
       apiURL = process.env.VUE_APP_BASE_API // 指定api路徑
       gameCode = window.location.pathname.split('/')[1].split('.html')[0] // 設定遊戲ID

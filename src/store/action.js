@@ -27,4 +27,3 @@ export const setLoading = ({commit}, visible) => {
 export const setApiURL = ({commit}, url) => {
 	commit(types.SET_API_URL, url)
 }
-
