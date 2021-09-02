@@ -15,7 +15,7 @@ export const state = {
   language: gameLanguage,
   loading: false,
   apiURL: apiURL,
-  gameMode: null, // 細單模式：slot、fish...
+  gameMode: 'Slot', // 細單模式：slot(預設)、fish...
   contentView: contentView, // 顯示模式：列表(List)、詳細頁(Detail)
 }
 

@@ -61,7 +61,7 @@ body {
 
 // close
 #close{
-	position: absolute;
+	position: fixed;
 	right: 20px;
 	top: 20px;
 	display: block;
@@ -150,7 +150,7 @@ img{
 	@include gradient-gary;
 }
 
-/*========== component ==========*/
+/*========== animate ==========*/
 
 
 /*========== plugin ==========*/

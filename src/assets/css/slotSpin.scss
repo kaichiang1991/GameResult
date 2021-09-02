@@ -1,0 +1,15 @@
+#spinDetails{
+  >h2{
+    @include gradient-primary;
+    font-weight: bold;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.spinList{
+  &:first-of-type .gameScreen{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}

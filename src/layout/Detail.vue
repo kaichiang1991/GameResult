@@ -48,7 +48,7 @@
       </table>
     </div>
     <div class="content">
-      <Content></Content>
+      <Content v-if="spinData" :spinData="spinData" :summary="summary"></Content>
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ import { exchangeDenom, currencyName } from '@/utils/common'
 export default {
   name: 'Detail',
   components: {
-    Content: async() => import('@/layout/'+ store.getters.gameMode +'.vue')
+    Content: async() => import('@/project/'+store.getters.gameID+'/spinDetails.vue')
   },
   props:{
     infoData:{
@@ -74,23 +74,27 @@ export default {
     rowData: {
       typeof: Object,
       default: null
-    }
+    },
   },
   data(){
     return{
       /** 遊戲資訊 */
       info: {
-        roundId: null,        // 單號
-        account: null,        // 玩家帳號
-        denom: null,          // 投注比例
-        currency: null,       // 幣別
-        betTime: null,        // 投注時間
-        endTime: null,        // 結束時間
-        amount: null,         // 投注額
-        winAmount: null,      // 贏分
+        roundId: null,                // 單號
+        account: null,                // 玩家帳號
+        denom: null,                  // 投注比例
+        currency: null,               // 幣別
+        betTime: null,                // 投注時間
+        endTime: null,                // 結束時間
+        amount: null,                 // 投注額
+        winAmount: null,              // 贏分
       },
-      /** 結果盤面 */
-      screen: {},
+      summary:{
+        money_fraction_multiple: 0,   // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
+        bet: 0,                       // 壓注乘數
+      },
+      /** 回合資料 */
+      spinData: null,
     }
   },
   computed: {
@@ -103,33 +107,34 @@ export default {
   methods: {
     /** 遊戲內部開啟細單 */
     async getGameDetail(){
-      // const params = {
-      //   token : this.gameToken,
-      //   round_code: this.rowData.round_code,
-      // }
+      const params = {
+        token : this.gameToken,
+        round_code: this.rowData.round_code,
+      }
 
-      // const data = await game_detail(params)
-
-      // // info
-      // const { currency_id, user_name, spin_summary: { round_code, denom } } = data
-      // this.info = {
-      //   gameName: this.gameName || getGameName(this.gameID),
-      //   roundId: round_code,
-      //   account: user_name,
-      //   denom: denom,
-      //   currency: currency_id,
-      // }
-
-      // // release
-      // this.release = data
-
-      // // screen
-      // this.gameScreen = {}
-      // // console.log('data--->', data)
+      const data = await game_detail(params)
+      this.spinData = data.spin_details
+      this.summary = {
+        money_fraction_multiple: data.money_fraction_multiple,
+        bet_multiple: data.spin_summary.bet_multiple,
+        bet: data.spin_summary.bet,
+      }
+      // console.log('data---->>', this.spinData)
     },
     /** 外部平台開啟細單 */
     async getPlatformDetail(){
-      
+      const params = {
+        token : this.gameToken,
+      }
+
+      const data = await platform_detail(params)
+      this.spinData = data.spin_details
+      this.summary = {
+        money_fraction_multiple: data.money_fraction_multiple,
+        bet_multiple: data.spin_summary.bet_multiple,
+        bet: data.spin_summary.bet,
+      }
+      // console.log('data---->>', this.spinData)
     },
   },
   mounted(){
@@ -153,7 +158,6 @@ export default {
     }else{
       this.getPlatformDetail()
     }
-    
   }
 }
 </script>

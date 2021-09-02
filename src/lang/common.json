@@ -3,42 +3,49 @@
     "BetHistory": "Bet History",
     "RoundID": "Round Num",
     "BetTotal": "Total Bet",
-    "WinTotal": "Total Win"
+    "WinTotal": "Total Win",
+    "GameScreen":"Game Screen"
   },
   "tw": {
     "BetHistory": "投注紀錄",
     "RoundID": "單號",
     "BetTotal": "投注額",
-    "WinTotal": "贏分"
+    "WinTotal": "贏分",
+    "GameScreen":"遊戲盤面"
   },
   "cn": {
     "BetHistory": "投注纪录",
     "RoundID": "单号",
     "BetTotal": "投注额",
-    "WinTotal": "赢分"
+    "WinTotal": "赢分",
+    "GameScreen":"游戏盘面"
   },
   "id": {
     "BetHistory": "Catatan taruhan",
     "RoundID": "ID",
     "BetTotal": "Total taruhan",
-    "WinTotal": "Total poin kemenangan"
+    "WinTotal": "Total poin kemenangan",
+    "GameScreen":"Layar Permainan"
   },
   "ko": {
     "BetHistory": "베팅 기록",
     "RoundID": "ID번호",
     "BetTotal": "베팅 금액",
-    "WinTotal": "총 윈 포인트"
+    "WinTotal": "총 윈 포인트",
+    "GameScreen":"게임 화면"
   },
   "th": {
     "BetHistory": "บันทึกการเดิมพัน",
     "RoundID": "ปัดเศษ ไอดี",
     "BetTotal": "คะแนนเดิมพันโดยรวม",
-    "WinTotal": "คะแนนชนะ"
+    "WinTotal": "คะแนนชนะ",
+    "GameScreen":"หน้าจอเกม"
   },
   "vi": {
     "BetHistory": "Lịch sử đặt cược",
     "RoundID": "Số đơn",
     "BetTotal": "Tổng số đặt cược",
-    "WinTotal": "Điểm thắng"
+    "WinTotal": "Điểm thắng",
+    "BonusGame":"Màn hình trò chơi"
   }
 }

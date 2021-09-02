@@ -70,9 +70,28 @@ export function getGameName(gameID, lang) {
   const url = process.env.NODE_ENV === 'development' ? process.env.VUE_APP_GAME_LIST : `${window.location.origin}${process.env.VUE_APP_GAME_LIST}`
   return axios.get(url).then(({ data }) => {
     const obj = data.GameNames.find(item => item.ID == Number(gameID.split('BN')[1])).Names
-    const name = obj.find(item=> item.lang == lang).Name
-    return name
+    return obj.find(item=> item.lang == lang).Name
   }).catch(error => {
     console.log(error)
   })
+}
+
+/**
+ * 取得遊戲狀態
+ * @param {number} state
+ * @param {number} no
+ */
+export function gameState(state) {
+  const gameState = {
+    0: 'NormalGame',
+    1: 'FreeGame',
+    2: 'BonusGame',
+    3: 'FeatureGame',
+    4: 'LuckyDraw',
+    5: 'DoubleGame'
+  }
+
+  const stateName = gameState[state]
+
+  return stateName
 }

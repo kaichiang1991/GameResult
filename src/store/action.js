@@ -4,16 +4,8 @@ export const setGameID = ({commit}, id) => {
 	commit(types.SET_GAMEID, id)
 }
 
-export const setGameToken = ({commit}, token) => {
-	commit(types.SET_GAMETOKEN, token)
-}
-
 export const setLanguage = ({commit}, lang) => {
 	commit(types.SET_LANGUAGE, lang)
-}
-
-export const setGameMode = ({commit}, mode) => {
-	commit(types.SET_GAMEMODE, mode)
 }
 
 export const setContentView = ({commit}, view) => {
@@ -26,4 +18,8 @@ export const setLoading = ({commit}, visible) => {
 
 export const setApiURL = ({commit}, url) => {
 	commit(types.SET_API_URL, url)
+}
+
+export const appInit = ({commit}, obj) => {
+	commit(types.APP_INIT, obj)
 }

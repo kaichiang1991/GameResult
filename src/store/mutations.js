@@ -3,17 +3,9 @@ export const mutations = {
   SET_GAMEID: (state, id) => {
     state.gameID = id
   },
-  /** 設定遊戲Token */
-  SET_GAMETOKEN: (state, token) => {
-    state.gameToken = token
-  },
   /** 設定語系 */
   SET_LANGUAGE: (state, lang) => {
     state.language = lang
-  },
-  /** 設定遊戲模式 */
-  SET_GAMEMODE: (state, mode)=>{
-    state.gameMode = mode
   },
   /** 設定顯示模式 */
   SET_CONTENT_VIEW: (state, view)=>{
@@ -26,5 +18,11 @@ export const mutations = {
   /** 設定API URL */
   SET_API_URL: (state, url)=>{
     state.apiURL = url
+  },
+  /** APP初始化設定 */
+  APP_INIT: (state, obj)=>{
+    const { gameMode, gameToken } = obj
+    state.gameMode = gameMode
+    state.gameToken = gameToken
   },
 }
