@@ -1,8 +1,8 @@
 <template>
   <div id="main">
-    <a id="close" @click.prevent="close()"><img src="~@img/close.png" alt=""></a>
+    <a v-if="openMode === 'game'" id="close" @click.prevent="close()"><img src="~@img/close.png" alt=""></a>
     <keep-alive include="List">
-      <component :is="contentView" :infoData="infoData" :rowData="rowData" @changeView="changeView"></component>
+      <component :is="contentView" :infoData="infoData" :rowData="rowData" @detailPage="detailPage"></component>
     </keep-alive>
     <div v-if="loading" id="loader"></div>
   </div>
@@ -30,11 +30,12 @@ export default {
     ...mapState({
       loading: state => state.loading,
       contentView: state => state.contentView,
+      openMode: state => state.openMode,
     }),
   },
   methods: {
-    /** 設定顯示模式 */
-    changeView(obj){
+    /** 顯示詳細頁 */
+    detailPage(obj){
       this.infoData = obj.info
       this.rowData = obj.row
       this.$store.commit('SET_CONTENT_VIEW', obj.view);
@@ -50,9 +51,6 @@ export default {
       }
     },
   },
-  created(){
-    
-  }
 }
 </script>
 

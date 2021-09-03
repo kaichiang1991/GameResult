@@ -45,7 +45,7 @@
           <li>{{ $t('TotalWin') }}</li>
         </ul>
         <ol class="_list" :data-none="$t('nodata')">
-          <li v-for="(item, key) in dataList" :key="key" class="item" @click="$emit('changeView', { view:'Detail', row: item, info: { userName, gameName, currency } })">
+          <li v-for="(item, key) in dataList" :key="key" class="item" @click="$emit('detailPage', { view:'Detail', row: item, info: { userName, gameName } })">
             <div :data-label="$t('RoundID')"><span class="txt-underline">{{ item.round_code }}</span></div>
             <div :data-label="$t('DateTime')"><span>{{ item.bet_time }}</span></div>
             <div :data-label="$t('BetTotal')"><span>{{ item.bet }}</span></div>
@@ -81,7 +81,6 @@ export default {
     return{
       userName: null, // 玩家帳號
       gameName: null, // 遊戲名稱
-      currency: null, // 幣種
       /** 搜尋條件 */
       condition:{
         searchType: 1, // 搜尋模式：單號查詢(0)、日期查詢(1)
@@ -124,8 +123,6 @@ export default {
         this.gameName = await getGameName(this.gameID, this.language)
       }
 
-      this.currency = res.currency_id // 幣種
-
       // 列表資料
       const rowlist = res.spin_summarys.slice(0)
       rowlist.map(v=>{
@@ -143,7 +140,6 @@ export default {
     /** 清除資料 */
     clearData(){
       this.pagination.listTotal = 0
-      this.currency = null
       this.dataList = {}
       this.pagination.currPage = 1
     },

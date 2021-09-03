@@ -19,10 +19,8 @@ export const mutations = {
   SET_API_URL: (state, url)=>{
     state.apiURL = url
   },
-  /** APP初始化設定 */
-  APP_INIT: (state, obj)=>{
-    const { gameMode, gameToken } = obj
-    state.gameMode = gameMode
-    state.gameToken = gameToken
+  /** 設定Token */
+  APP_TOKEN: (state, token)=>{
+    state.gameToken = token
   },
 }

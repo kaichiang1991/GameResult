@@ -29,8 +29,8 @@ export default {
       return {
         type: game_state_type, // 遊戲狀態(code:number)
         state: gameState(game_state_type), // 遊戲狀態(name:string)
-        times: times, // 回和數
-        bet: this.summary.bet_multiple, // 壓注乘數
+        times, // 回和次數
+        betMultiple: this.summary.bet_multiple, // 押注乘數
         win: Number(Decimal.div(win, this.summary.money_fraction_multiple)), // 派彩
         totalWinLines: win_line_infos.length, // 總連線數
       }
@@ -64,9 +64,9 @@ export default {
       let times = null, gtype = 0;
       this.renderData = this.spinData.map(data=>{
         data.game_state_type === gtype ? times++ : times=1
+        data.times = times
         gtype = data.game_state_type
         return {
-          times,
           infos: this.infoData(data),
           screens: this.screenData(data.info),
           lines: this.lineData(data.info.win_line_infos),

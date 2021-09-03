@@ -3,8 +3,8 @@ const getters = {
 	language: state => state.language,
 	loading: state => state.loading,
 	apiURL: state => state.apiURL,
-	gameMode: state => state.gameMode,
 	contentView: state => state.contentView,
+	openMode: state => state.openMode,
 }
 
 export default getters

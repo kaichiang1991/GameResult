@@ -59,7 +59,7 @@
 import store from '@/store'
 import { mapState } from 'vuex'
 import { game_detail, platform_detail } from '@/api/detail'
-import { exchangeDenom, currencyName } from '@/utils/common'
+import { exchangeDenom, getGameName, timeFormat } from '@/utils/common'
 
 export default {
   name: 'Detail',
@@ -88,10 +88,13 @@ export default {
         endTime: null,                // 結束時間
         amount: null,                 // 投注額
         winAmount: null,              // 贏分
+        gameName: '',                 // 遊戲名稱
       },
+      /** 遊戲摘要 */
       summary:{
         money_fraction_multiple: 0,   // 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
-        bet: 0,                       // 壓注乘數
+        bet_multiple: 0,              // 壓注乘數
+        bet: 0,                       // 壓注金額
       },
       /** 回合資料 */
       spinData: null,
@@ -102,6 +105,8 @@ export default {
       gameToken: state => state.gameToken,
       gameID: state => state.gameID,
       contentView: state => state.contentView,
+      language: state => state.language,
+      openMode: state => state.openMode,
     }),
   },
   methods: {
@@ -114,12 +119,12 @@ export default {
 
       const data = await game_detail(params)
       this.spinData = data.spin_details
+      this.info.currency = data.currency_code
       this.summary = {
         money_fraction_multiple: data.money_fraction_multiple,
         bet_multiple: data.spin_summary.bet_multiple,
         bet: data.spin_summary.bet,
       }
-      // console.log('data---->>', this.spinData)
     },
     /** 外部平台開啟細單 */
     async getPlatformDetail(){
@@ -128,26 +133,38 @@ export default {
       }
 
       const data = await platform_detail(params)
-      this.spinData = data.spin_details
-      this.summary = {
-        money_fraction_multiple: data.money_fraction_multiple,
-        bet_multiple: data.spin_summary.bet_multiple,
-        bet: data.spin_summary.bet,
+      const { currency_code, game_code, user_name, money_fraction_multiple, spin_summary:{ round_code, denom, bet_time, end_time, bet, win, bet_multiple } } = data
+      this.$store.commit('SET_GAMEID', game_code);
+      this.info = {
+        roundId: round_code,
+        account: user_name,
+        denom: exchangeDenom(denom),
+        currency: currency_code,
+        betTime: timeFormat(bet_time),
+        endTime: timeFormat(end_time),
+        amount: bet / money_fraction_multiple,
+        winAmount: win / money_fraction_multiple,
+        gameName: await getGameName(game_code, this.language)
       }
-      // console.log('data---->>', this.spinData)
+      this.summary = {
+        money_fraction_multiple: money_fraction_multiple,
+        bet_multiple: bet_multiple,
+        bet: bet,
+      }
+      this.spinData = data.spin_details
+
     },
   },
   mounted(){
   },
   created(){
-    if(this.rowData){
+    if(this.openMode === 'game'){
       const { round_code, denom, bet_time, end_time, bet, win } = this.rowData
-      const { userName, currency, gameName } = this.infoData
+      const { userName, gameName } = this.infoData
       this.info = {
         roundId: round_code,
         account: userName,
         denom: exchangeDenom(denom),
-        currency: currencyName(currency),
         betTime: bet_time,
         endTime: end_time,
         amount: bet,

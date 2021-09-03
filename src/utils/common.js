@@ -34,25 +34,25 @@ export function exchangeDenom(num) {
   return Number(Decimal.mul(num || 0, 0.01))
 }
 
-/**
- * 幣種名稱
- * @param {string} currency
- */
-export function currencyName(currency) {
-  const currencyList = {
-    1: 'CNY', // 人民幣
-    2: 'VND', // 越南盾
-    3: 'MYR', // 馬來西亞令吉
-    4: 'THB', // 泰銖
-    5: 'TWD', // 新台幣
-    6: 'VNDK', // 越南盾(K)
-    7: 'OTHER', //泰銖
-    8: 'IDR', //印尼盾
-    9: 'KRW', //韓元
-  }
+// /**
+//  * 幣種名稱
+//  * @param {string} currency
+//  */
+// export function currencyName(currency) {
+//   const currencyList = {
+//     1: 'CNY', // 人民幣
+//     2: 'VND', // 越南盾
+//     3: 'MYR', // 馬來西亞令吉
+//     4: 'THB', // 泰銖
+//     5: 'TWD', // 新台幣
+//     6: 'VNDK', // 越南盾(K)
+//     7: 'OTHER', //泰銖
+//     8: 'IDR', //印尼盾
+//     9: 'KRW', //韓元
+//   }
 
-  return currencyList[currency]
-}
+//   return currencyList[currency]
+// }
 
 /**
  * 轉換時間格式(Timestamp To UTC)

@@ -2,8 +2,8 @@
   <div class="screenInfo" :data-collapse="!open">
     <div class="wrap">
       <ul class="info">
-        <li>{{ $t(infos.state) }}：＃{{ infos.times }}</li>
-        <li>{{ $t('BetLevel') }}：{{ infos.bet }}</li>
+        <li class="gametype">{{ $t(infos.state) }}<span v-if="infos.type > 0">：＃{{ infos.times }}</span></li>
+        <li v-if="infos.type == 0">{{ $t('BetLevel') }}：{{ infos.betMultiple }}</li>
         <li>{{ $t('Payout') }}：{{ infos.win }}</li>
         <li>{{ $t('TotalWinLines') }}：{{ infos.totalWinLines }}</li>
       </ul>
@@ -88,6 +88,10 @@ export default {
     line-height: 2em;
     font-weight: bold;
     font-size: initial;
+    .gametype{
+      color: $fc-primary;
+      font-size: $fz-primary;
+    }
   }
   &[data-collapse]+.lineInfo{
     display: none !important;
