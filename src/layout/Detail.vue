@@ -3,7 +3,7 @@
     <div class="header">
       <h1>{{ $t('DetailTitle')}}</h1>
       <h2>{{ $t('Game') }}：{{ info.gameName }}</h2>
-      <table class="table-style">
+      <table class="table-style summary">
         <thead>
           <tr>
             <th>{{ $t('RoundID') }}</th>
@@ -14,15 +14,15 @@
         </thead>
         <tbody>
           <tr>
-            <td :data-label="$t('RoundID')">{{ info.roundId }}</td>
-            <td :data-label="$t('UserAccount')">{{ info.account }}</td>
-            <td :data-label="$t('Denom')">{{ info.denom }}</td>
-            <td :data-label="$t('Currency')">{{ info.currency }}</td>
+            <td :data-label="$t('RoundID')"><span>{{ info.roundId }}</span></td>
+            <td :data-label="$t('UserAccount')"><span>{{ info.account }}</span></td>
+            <td :data-label="$t('Denom')"><span>{{ info.denom }}</span></td>
+            <td :data-label="$t('Currency')"><span>{{ info.currency }}</span></td>
           </tr>
         </tbody>
       </table>
       <h2>{{ $t('RoundDetail') }}</h2>
-      <table class="table-style">
+      <table class="table-style result">
         <thead>
           <tr>
             <th>{{ $t('time') }}</th>
@@ -33,15 +33,15 @@
         </thead>
         <tbody>
           <tr>
-            <td :data-label="$t('time')">{{ info.betTime }}</td>
-            <td :data-label="$t('conduct')">{{ $t('BetTotal') }}</td>
-            <td :data-label="$t('amount')">{{ info.amount }}</td>
+            <td :data-label="$t('time')"><span>{{ info.betTime }}</span></td>
+            <td :data-label="$t('conduct')"><span>{{ $t('BetTotal') }}</span></td>
+            <td :data-label="$t('amount')"><span>{{ info.amount }}</span></td>
             <td></td>
           </tr>
           <tr>
-            <td :data-label="$t('time')">{{ info.endTime }}</td>
-            <td :data-label="$t('conduct')">{{ $t('WinTotal') }}</td>
-            <td :data-label="$t('amount')">{{ info.winAmount }}</td>
+            <td :data-label="$t('time')"><span>{{ info.endTime }}</span></td>
+            <td :data-label="$t('conduct')"><span>{{ $t('WinTotal') }}</span></td>
+            <td :data-label="$t('amount')"><span>{{ info.winAmount }}</span></td>
             <td></td>
           </tr>
         </tbody>
@@ -207,6 +207,7 @@ export default {
   th,td{
     padding: 1em .5em;
     text-align: center;
+    vertical-align: middle;
     width: 25%;
   }
   thead{
@@ -223,10 +224,50 @@ export default {
   }
 }
 @media screen and (max-width: 1000px){
+  #detail{
+    padding: 60px 2.5%;
+    .table-style.summary{
+      thead{
+        display: none;
+      }
+      tbody{
+        tr{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: stretch;
+          align-content: stretch;
+        }
+        td{
+          display: block;
+          width: 50%;
+          padding: 0;
+          &::before{
+            display: block;
+            content: attr(data-label);
+            color: #fdefce;
+            padding: 1em .5em;
+            @include gradient-dark-up;
+          }
+          span{
+            display: block;
+            padding: 1em .5em;
+            @include gradient-dark-down;
+          }
+        }
+      }
+    }
+  }
 	.table-style{
     th,td{
       &:empty{
         display: none;
+      }
+    }
+    td{
+      span{
+        font-size: $fz-min;
       }
     }
   }

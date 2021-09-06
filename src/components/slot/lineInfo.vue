@@ -65,15 +65,7 @@ export default {
   background: #090909;
   padding: 20px;
   border-top: 1px solid #333;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: center;
   .list{
-    width: 48%;
-    margin: 1%;
     >table{
       width: 100%;
       text-align: center;
@@ -86,7 +78,7 @@ export default {
         font-size: medium;
         border-top: 1px solid #333;
         border-bottom: 1px solid #333;
-        color: $fc-primary;
+        color: $color-primary;
         background: #111111;
         background: -moz-linear-gradient(top,  #111111 0%, #171717 2%, #1a1a1a 4%, #212121 89%, #212121 96%, #1d1d1d 98%, #161616 100%);
         background: -webkit-linear-gradient(top,  #111111 0%,#171717 2%,#1a1a1a 4%,#212121 89%,#212121 96%,#1d1d1d 98%,#161616 100%);
@@ -103,6 +95,20 @@ export default {
         width: 55px;
         height: auto;
       }
+    }
+  }
+}
+@media only screen and (min-width: 1001px){
+  .lineInfo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    .list{
+      width: 48%;
+      margin: 1%;
     }
   }
 }

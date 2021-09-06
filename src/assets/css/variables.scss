@@ -1,5 +1,6 @@
 /*========== color ==========*/
-$color-primary: #ffc336;
+// $color-primary: #ffc336;
+$color-primary: #f2d7a4;
 $color-gary: #333;
 
 @mixin gradient-primary(){
@@ -72,22 +73,27 @@ $color-gary: #333;
 }
 
 /*========== font ==========*/
-$fz-family: '微軟正黑體', sans-serif;
 
+$fz-family: '微軟正黑體', sans-serif;
 $fz-primary: 18px;
 $fz-title: 30px;
 $fz-sub: 24px;
 $fz-min: 16px;
+$fz-tiny: 14px;
 
-$fc-primary: #f2d7a4;
-
-// $fz-primary-mid: 6.333vmin;
-// $fz-title-mid: 8vmin;
-// $fz-sub-mid: 4.666vmin;
-
-// $fz-primary-min: 16px;
-// $fz-title-min: 24px;
-// $fz-sub-min: 15px;
+@mixin elementUI-icon(){
+  font-family: element-icons!important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 /*========== form ==========*/
 $inputH : 35px;

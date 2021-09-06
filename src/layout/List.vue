@@ -5,7 +5,7 @@
       <ul class="form-style">
         <li>
           <div class="dataTime">
-            <label>{{ $t('SearchDate') }}</label>
+            <label class="label-title">{{ $t('SearchDate') }}</label>
             <el-date-picker
               v-model="searchDate[0]"
               type="date"
@@ -28,7 +28,7 @@
         </li>
         <li>
           <div class="inputText">
-            <label for="">{{ $t('IDSearch') }}</label>
+            <label class="label-title">{{ $t('IDSearch') }}</label>
             <el-input v-model="condition.itemNumber"></el-input>
             <el-button @click.prevent="getListByID" class="gary">{{ $t('Search') }}</el-button>
           </div>
@@ -232,7 +232,7 @@ export default {
   .header{
     height: 200px;
     .title{
-      padding: .5em 0;
+      padding: .8em 0 .5em;
     }
   }
   .betPrompt{
@@ -272,6 +272,7 @@ export default {
       border: none;
       border-radius: 4px;
       margin: 0 .5em;
+      text-align: center;
       &:focus{ 
         outline: none;
       }
@@ -312,7 +313,6 @@ export default {
 	}
   ._list{
     position: relative;
-    // color: #eee;
     >.item{
       cursor: pointer;
       padding: 1em .5em;
@@ -371,6 +371,108 @@ export default {
 }
 
 @media only screen and (max-width: 1000px){
-  
+  .header{
+    .title{
+      padding: 20px 0;
+    }
+    .form-style{
+      padding: 2.5% 5%;
+      label.label-title{
+        display: block;
+        padding: .5em 0;
+        &::after{
+          content: '：';
+        }
+        &+.el-input{
+          margin-left: 0;
+        }
+      }
+      .dataTime{
+        .el-date-editor.el-input{
+          width: 120px;
+        }
+      }
+      /deep/
+      .el-input{
+        .el-input__icon{
+          line-height: 30px;
+        }
+        .el-input__inner{
+          line-height: 30px;
+          height: 30px;
+        }
+      }
+      .el-button{
+        line-height: 30px;
+      }
+    }
+  }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  #list{
+    height: auto;
+    .header,.content{
+      height: auto;
+    }
+    .betPrompt{
+      @include gradient-gary;
+      padding: 0 1em;
+      line-height: 3em;
+      font-size: $fz-tiny;
+    }
+  }
+  .data-list{
+    text-align: left;
+    ._head{
+      display: none;
+    }
+    ._list{
+      &>.item{
+        position: relative;
+        padding: 2.5% 5%;
+        [data-label]{
+          padding: .5em 0;
+          &::before{
+            content: attr(data-label)'：';
+          }
+          &:first-child{
+            font-size: $fz-min;
+            &::before{
+              @include elementUI-icon;
+              content: "\e78b";
+              margin-right: .5em;
+            }
+          }
+        }
+        &:nth-child(odd){
+          background: #111;
+        }
+        &::after{
+          position: absolute;
+          @include elementUI-icon;
+          content: "\e6e0";
+          display: block;
+          position: absolute;
+          right: 2.5%;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: $fz-title;
+          opacity: .3;
+          font-weight: normal;
+        }
+      }
+      &:empty::before{
+        position: relative;
+        transform: none;
+        left: auto;
+        top: auto;
+        text-align: center;
+        margin: 10% auto;
+      }
+    }
+  }
 }
 </style>

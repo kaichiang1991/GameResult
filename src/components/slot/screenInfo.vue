@@ -14,7 +14,7 @@
         <screen :symbolResult="screens.symbol_result"></screen>
       </slot>
     </div>
-    <a v-if="infos.totalWinLines > 0" :class="[{ 'el-icon-minus':open },'collapse el-icon-plus']" @click.stop="collapse"></a>
+    <a v-if="infos.totalWinLines > 0" :class="[{ 'el-icon-minus':open },'el-icon-plus collapse']" @click.stop="collapse"></a>
   </div>
 </template>
 
@@ -55,13 +55,7 @@ export default {
 <style lang="scss">
 .screenInfo{
   position: relative;
-  padding: 10px 70px 10px 10px;
   @include bg-gradient-dark;
-	display: flex;
-	flex-direction: row-reverse;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
   .collapse{
     width: 30px;
     height: 30px;
@@ -70,8 +64,6 @@ export default {
     display: block;
     position: absolute;
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     box-shadow: 0px 3px 13.5px 1.5px rgba(0, 0, 0, 0.8);
     border-radius: 3px;
     cursor: pointer;
@@ -79,22 +71,49 @@ export default {
     font-weight: bold;
     @include bg-gradient-primary;
   }
-  .wrap{
-    flex: 1;
-    padding: 20px 10px;
-  }
   .info{
-    margin: 0 5%;
     line-height: 2em;
     font-weight: bold;
     font-size: initial;
     .gametype{
-      color: $fc-primary;
+      color: $color-primary;
       font-size: $fz-primary;
     }
   }
   &[data-collapse]+.lineInfo{
     display: none !important;
+  }
+}
+@media only screen and (min-width: 1001px){
+  .screenInfo{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 70px 10px 10px;
+    .collapse{
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .wrap{
+      flex: 1;
+      padding: 20px 10px;
+    }
+    .info{
+      margin: 0 5%;
+    }
+  }
+}
+@media only screen and (max-width: 1000px){
+  .screenInfo{
+    padding: 10px;
+    .collapse{
+      top: 20px;
+    }
+    .wrap{
+      padding: 10px;
+    }
   }
 }
 </style>

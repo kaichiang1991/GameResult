@@ -8,7 +8,7 @@ https://{BaseUrl}/game/GameCommon/GameResult/{BN**}.html/?{query參數}
 
 ---
 
-## 架構流程圖
+## ＃ 架構流程圖
 
 ```mermaid
 graph TD
@@ -27,7 +27,7 @@ graph TD
 
 ---
 
-## 本地開發流程
+## ＃ 本地開發流程
 
 1. 更新遊戲清單：新增[gameList.json](http://gitlab.msslot.bet/release/gamelist)遊戲資訊並更新。
 2. 新增專案symbol圖：圖片位置 src\assets\images\{BN**}\

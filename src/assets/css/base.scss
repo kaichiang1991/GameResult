@@ -186,7 +186,14 @@ img{
 	html,body{
 		height: auto;
 	}
+	body{
+		font-size: $fz-tiny;
+	}
 	#main{
-		width: 95%;
+		width: auto;
+		height: auto;
+	}
+	#close{
+		right: 5%;
 	}
 }
