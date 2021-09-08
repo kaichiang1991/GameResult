@@ -13,7 +13,8 @@ export default {
   },
   data(){
     return{
-      gameToken: '594c0fd133224b3ea28a34709ad86b45', // 本地端開發token
+      gameToken: 'a1c28bf3a339409dabd69cc9adb4a5a4', // 本地端開發token
+      multiple: 0.5 // 押注乘數基分
     }
   },
   computed: {
@@ -22,10 +23,12 @@ export default {
     }),
   },
   created(){
-    /** 專案初始化設定(開發環境) */
+    /** 專案初始化設定 */
     if(this.openMode === 'game'){
+      // 遊戲內部開啟細單
       this.$store.commit('APP_TOKEN', this.gameToken);
     }
+    this.$store.commit('SET_MULTIPLE', this.multiple);
   }
 }
 </script>

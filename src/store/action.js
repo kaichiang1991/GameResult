@@ -23,3 +23,7 @@ export const setApiURL = ({commit}, url) => {
 export const appInit = ({commit}, obj) => {
 	commit(types.APP_INIT, obj)
 }
+
+export const setMultiple = ({commit}, multiple) => {
+	commit(types.SET_MULTIPLE, multiple)
+}

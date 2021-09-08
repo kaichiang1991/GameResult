@@ -1,6 +1,7 @@
 import { Decimal } from 'decimal.js'
 import { screenInfo, lineInfo } from '@/components/slot'
-import { gameState } from '@/utils/common'
+import { gameState, betMultiples } from '@/utils/common'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -22,6 +23,11 @@ export default {
       renderData: null
     }
   },
+  computed: {
+    ...mapState({
+      multiple: state => state.multiple,
+    }),
+  },
   methods: {
     /** 整理各局資料 */
     infoData(data){
@@ -30,7 +36,7 @@ export default {
         type: game_state_type, // 遊戲狀態(code:number)
         state: gameState(game_state_type), // 遊戲狀態(name:string)
         times, // 回和次數
-        betMultiple: this.summary.bet_multiple, // 押注乘數
+        betMultiple: betMultiples(this.summary.bet, this.summary.money_fraction_multiple, this.multiple), // 押注乘數
         win: Number(Decimal.div(win, this.summary.money_fraction_multiple)), // 派彩
         totalWinLines: win_line_infos.length, // 總連線數
       }

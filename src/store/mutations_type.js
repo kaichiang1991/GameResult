@@ -4,4 +4,5 @@ export const SET_LANGUAGE = 'SET_LANGUAGE'
 export const SET_LOADING = 'SET_LOADING'
 export const SET_API_URL = 'SET_API_URL'
 export const APP_INIT = 'APP_INIT'
+export const SET_MULTIPLE = 'SET_MULTIPLE'
 

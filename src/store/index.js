@@ -17,6 +17,7 @@ export const state = {
   apiURL: apiURL,
   contentView: contentView,   // 顯示模式：列表(List)、詳細頁(Detail)
   openMode: openMode,         // 細單開啟模式
+  multiple: 0, // 押注乘數基分
 }
 
 export default new Vuex.Store({

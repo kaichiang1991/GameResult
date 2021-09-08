@@ -34,6 +34,17 @@ export function exchangeDenom(num) {
   return Number(Decimal.mul(num || 0, 0.01))
 }
 
+/**
+ * 換算押注乘数
+ * @param {number} bet 下注金額
+ * @param {number} fun_multiple 錢小數轉整數時要乘的倍數; 以整數型態保存, 轉為小數需除以此欄位
+ * @param {number} multiple 乘數
+ */
+export function betMultiples(bet, fun_multiple, multiple) {
+  const amount = Number(Decimal.div(bet, fun_multiple))
+  return Number(Decimal.div(amount, multiple))
+}
+
 // /**
 //  * 幣種名稱
 //  * @param {string} currency

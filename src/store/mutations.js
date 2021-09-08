@@ -23,4 +23,8 @@ export const mutations = {
   APP_TOKEN: (state, token)=>{
     state.gameToken = token
   },
+  /** 設定押注乘數基分 */
+  SET_MULTIPLE: (state, multiple)=>{
+    state.multiple = multiple
+  },
 }
