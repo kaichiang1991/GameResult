@@ -1,0 +1,77 @@
+# This file is a template, and might need editing before it works on your project.
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:14
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ee/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - deploy
+
+# build 階段，打包程式
+build:
+  stage: build
+  environment: release
+  only:
+    - master  # 僅master分支時進行打包
+  script:
+    - npm install
+    - npm run build
+    - mv dist "$CI_PROJECT_TITLE"       # 移動到根目錄下，方便artifacts下載的時候路徑簡單
+
+  artifacts:
+    name: "$CI_PROJECT_TITLE"
+    paths:
+      - "$CI_PROJECT_TITLE"
+
+push-to-remote:
+  stage: deploy
+  rules:
+    - when: manual
+
+  dependencies:
+    - build
+
+  script:
+    ##
+    ## 準備 git 的環境
+    ##
+    # 安裝 ssh-agent
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+
+    # 啟動 ssh-agent
+    - eval $(ssh-agent -s)
+
+    # 從CI/CD variables 裡面讀取 ssh key
+    # 並用 ssh-add 用 ssh-agent 做代理
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+
+    # 設定 ~/.ssh 權限
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
+    # 掃描 gitlab 位置的 ssh key
+    # 並輸出至 ~/.ssh/known_hosts
+    - ssh-keyscan gitlab.msslot.bet >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+    # set git config
+    - git config --global user.email $GITLAB_USER_EMAIL
+    - git config --global user.name $GITLAB_USER_NAME
+
+    # 推到 GameCommon
+    - git clone $GAME_COMMON_REPO dist
+    - rm -rf dist/$CI_PROJECT_TITLE          # 移除遠端的 GameResult
+    - mv $CI_PROJECT_TITLE dist/$CI_PROJECT_TITLE
+    - cd dist
+    # git action
+    - git add .
+    - git commit -m "[$CI_PROJECT_TITLE] $CI_COMMIT_MESSAGE"
+    - git push origin master
+    
+
