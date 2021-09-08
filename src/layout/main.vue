@@ -13,7 +13,6 @@ import { mapState } from 'vuex'
 import List from '@/layout/List'
 import Detail from '@/layout/Detail'
 
-
 export default {
   name: 'Main',
   components: {

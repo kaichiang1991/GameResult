@@ -32,6 +32,17 @@ graph TD
 1. 更新遊戲清單：新增[gameList.json](http://gitlab.msslot.bet/release/gamelist)遊戲資訊並更新。
 2. 新增專案symbol圖：圖片位置 src\assets\images\{BN**}\
 3. 新增LineGame賠付線譜：src\utils\paylinesData.js
-4. 創建新專案：cmd輸入指令創建新專案模板（區分遊戲類型slot, fish....）。
+4. 創建新專案（專案類型可參考demo分支）。
 5. 設定token：使用[QA工具](https://assets.msgdev.info/game/qatool/#/) 取得遊戲token並在app.vue入口頁設定。
+
+---
+
+## ＃ 專案參考範例（分支：demo）
+
+- BN09：切換盤面按鈕（左右切換）PS：僅示意盤面左右切換功能，非BN09正式細單完整結構。
+- BN10：Line Game模式。
+- BN16：Way Game模式。
+- BN54：變牌盤面（箭頭表示）。
+- BN82：新版遊戲模式。
+
 

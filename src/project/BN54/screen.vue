@@ -2,7 +2,8 @@
   <div class="screen">
     <ul v-for="(row,idx_r) in symbolResult" :key="`row_${idx_r}`">
       <li v-for="(symbol,idx_s) in row" :key="`symbol_${idx_s}`">
-        <img class="symbol" :src="require(`@img/${gameID}/${symbol}.png`)" alt="">
+        <img v-if="symbol<=70" class="symbol" :src="require(`@img/${gameID}/${symbol}.png`)" alt="">
+        <img v-else class="symbol" :src="require(`@img/${gameID}/${language}/${symbol}.png`)" alt="">
       </li>
     </ul>
   </div>
@@ -23,6 +24,7 @@ export default {
   computed: {
     ...mapState({
       gameID: state => state.gameID,
+      language: state => state.language,
     }),
   },
   methods: {

@@ -15,7 +15,10 @@
               <paylines :winPosition="list.win_position" :screen="screens.symbol_result" :lineNo="list.line_no"></paylines>
           </td>
           <td>{{ list.symbol_count }}</td>
-          <td><img class="symbol" :src="require(`@img/${gameID}/${list.symbol_id}.png`)" alt=""></td>
+          <td>
+            <img v-if="list.symbol_id<=70" class="symbol" :src="require(`@img/${gameID}/${list.symbol_id}.png`)" alt="">
+            <img v-else class="symbol" :src="require(`@img/${gameID}/${language}/${list.symbol_id}.png`)" alt="">
+          </td>
           <td>{{ list.multiplier }}</td>
           <td>{{ list.cash }}</td>
         </tr>
@@ -49,6 +52,7 @@ export default {
   computed: {
     ...mapState({
       gameID: state => state.gameID,
+      language: state => state.language,
     }),
   },
   methods: {

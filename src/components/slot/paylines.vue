@@ -21,7 +21,7 @@ export default {
   },
   data(){
     return{
-      lineData: []
+      lineData: null
     }
   },
   computed: {
@@ -32,6 +32,7 @@ export default {
   methods: {
     /** 畫賠付線 */
     drawPayLine(x,y){
+      if(!this.lineData) return
       return this.lineData.find(pos=>pos[0] == x && pos[1] == y)
     },
     /** 畫贏分線 */
@@ -42,7 +43,8 @@ export default {
   mounted(){
   },
   created(){
-    this.lineData = paylinesData(this.gameID)[this.lineNo]
+    this.lineData = paylinesData(this.gameID)
+    if(this.lineData) this.lineData = this.lineData[this.lineNo]
   },
 }
 </script>

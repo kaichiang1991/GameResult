@@ -1,14 +1,16 @@
 <template>
   <div class="screenInfo" :data-collapse="!open">
-    <div class="wrap">
-      <ul class="info">
-        <li class="gametype">{{ $t(infos.state) }}<span v-if="infos.type > 0">：＃{{ infos.times }}</span></li>
-        <li v-if="infos.type == 0">{{ $t('BetLevel') }}：{{ infos.betMultiple }}</li>
-        <li>{{ $t('Payout') }}：{{ infos.win }}</li>
-        <li>{{ $t('TotalWinLines') }}：{{ infos.totalWinLines }}</li>
-      </ul>
-    </div>
     <!-- "slot" 標籤內表示可由外部客製化該區塊 -->
+    <div class="wrap">
+      <slot name="info">
+        <ul class="info">
+          <li class="gametype">{{ $t(infos.state) }}<span v-if="infos.type > 0">：＃{{ infos.times }}</span></li>
+          <li v-if="infos.type == 0">{{ $t('BetLevel') }}：{{ infos.betMultiple }}</li>
+          <li>{{ $t('Payout') }}：{{ infos.win }}</li>
+          <li>{{ $t('TotalWinLines') }}：{{ infos.totalWinLines }}</li>
+        </ul>
+      </slot>
+    </div>
     <div class="wrap">
       <slot name="screen">
         <screen :symbolResult="screens.symbol_result"></screen>
@@ -69,6 +71,7 @@ export default {
     cursor: pointer;
     color: #000;
     font-weight: bold;
+    font-size: 20px;
     @include bg-gradient-primary;
   }
   .info{

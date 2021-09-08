@@ -55,12 +55,7 @@
       </div>
     </div>
     <div class="footer" v-show="pagination.listTotal > 0">
-      <el-button icon="el-icon-arrow-left" class="gary" :disabled="pagination.currPage == 1" @click="prevPage()"></el-button>
-      <select @change="changePage" v-model="pagination.currPage">
-        <option v-for="(item,index) in pagination.listTotal" :value="index+1" :key="index">{{ index+1 }}</option>
-      </select>
-      <span class="total">{{ pagination.listTotal }}</span>
-      <el-button icon="el-icon-arrow-right" class="gary" :disabled="pagination.currPage == pagination.listTotal" @click="nextPage()"></el-button>
+      <pagination :pagination.sync="pagination" @prevPage="prevPage" @nextPage="nextPage" @changePage="changePage"></pagination>
     </div>
   </div>
 </template>
@@ -72,10 +67,12 @@ import { mapState } from 'vuex'
 import moment from 'moment'
 import { getList } from '@/api/list'
 import { timeFormat, getGameName } from '@/utils/common'
+import pagination from '@/components/pagination.vue'
 
 export default {
   name: 'List',
   components:{
+    pagination,
   },
   data(){
     return{
@@ -100,9 +97,9 @@ export default {
       },
       /** 頁碼 */
       pagination:{
-        currPage: 1,
-        listTotal: 0,
-        intPerPage: 10,
+        currPage: 1, // 當前頁數
+        listTotal: 0, // 總頁數
+        intPerPage: 10, // 一頁幾筆
       },
       /** 資料列表 */
       dataList: {}
@@ -246,45 +243,9 @@ export default {
     height: calc(100vh - 245px);
   }
   .footer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: center;
-    height: 45px;
-    padding: 0 .5em;
-    font-size: 15px;
-    @include gradient-gary;
-    .el-button{
-      line-height: normal;
-      padding: 0;
-      width: 25px;
-      height: 25px;
-      margin: 0 .5em;
-      &.is-disabled{
-        opacity: .5;
-      }
-    }
-    select{
-      min-width: 3em;
-      height: 25px;
-      border: none;
-      border-radius: 4px;
-      margin: 0 .5em;
-      text-align: center;
-      &:focus{ 
-        outline: none;
-      }
-    }
-    .total{
-      display: inline-block;
-      font-weight: bold;
-      &::before{
-        content: '/';
-        margin: 0 .5em 0 .25em;
-        vertical-align: top;
-      }
+    .pagination{
+      @include gradient-gary;
+      justify-content: flex-end;
     }
   }
 }
@@ -328,9 +289,10 @@ export default {
 			content: attr(data-none);
 			display: block;
 			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%,-50%);
+      width: 100%;
+      text-align: center;
+			left: 0;
+			top: 20%;
       padding: 1em 2em;
       font-size: $fz-min;
 		}

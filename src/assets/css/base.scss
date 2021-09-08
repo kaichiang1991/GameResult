@@ -150,6 +150,16 @@ img{
 	@include gradient-gary;
 }
 
+// icon
+i.arrow{
+	font-size: 30px;
+	margin: 10px auto;
+	display: block;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+}
+
 /*========== animate ==========*/
 
 
@@ -194,6 +204,6 @@ img{
 		height: auto;
 	}
 	#close{
-		right: 5%;
+		right: 2.5%;
 	}
 }

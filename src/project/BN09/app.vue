@@ -7,13 +7,13 @@ import { mapState } from 'vuex'
 import Main from '@/layout/Main'
 
 export default {
-  name: 'BN10',
+  name: 'BN09',
   components: {
     Main
   },
   data(){
     return{
-      gameToken: 'c956b64b4c8d4e7c9ca3a6c2b53357c1', // 本地端開發token
+      gameToken: 'b2d280b92438444abf47d8808a5c22b6', // 本地端開發token
     }
   },
   computed: {
