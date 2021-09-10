@@ -12,14 +12,14 @@ https://{BaseUrl}/game/GameCommon/GameResult/{BN**}.html/?{query參數}
 
 ```mermaid
 graph TD
-    A(專案入口/Entry) --> B(主框架/Layout)
+    A(專案入口/App) --> B(主框架/Layout)
     B --> C{細單開啟方式/Mode}
     C -->|遊戲內開啟| D[列表頁/List]
     D --> E[詳細頁/Detail]
     C -->|外部平台開啟| E
 ```
 
-- **Entry**：src/project/BN{ID}/app.vue 各專案入口頁。
+- **App**：src/project/BN{ID}/app.vue 各專案入口頁。
 - **Layout**：src/layout/Main.vue 專案app.vue引入layout/main.vue主框架。
 - **Mode**：由Vuex(src/store/index.js)引入baseInfo（src/utils/baseInfo.js）判斷細單是由內部遊戲或外部平台開啟。
 - **List**：src/layout/List.vue若細單由遊戲內部開啟，則顯示列表頁後再進入詳細頁。
@@ -30,9 +30,9 @@ graph TD
 ## ＃ 本地開發流程
 
 1. 更新遊戲清單：新增[gameList.json](http://gitlab.msslot.bet/release/gamelist)遊戲資訊並更新。
-2. 新增專案symbol圖：圖片位置 src\assets\images\{BN**}\
-3. 新增LineGame賠付線譜：src\utils\paylinesData.js
-4. 創建新專案（專案類型可參考demo分支）。
+2. 新增專案symbol圖：圖片位置「src\assets\images\{BN**}\」。
+3. 新增LineGame賠付線譜：於「src\utils\paylinesData.js」新增專案賠付線線譜。
+4. 創建新專案：於「src\project\{BN**}\」內創建新專案（專案類型可參考demo分支）。
 5. 設定token：使用[QA工具](https://assets.msgdev.info/game/qatool/#/) 取得遊戲token並在app.vue入口頁設定。
 
 ---
