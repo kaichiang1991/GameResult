@@ -16,7 +16,7 @@ export function baseInfo() {
       gameToken = null
     }else{
       // 遊戲內開啟細單
-      apiURL = parent.Entry.getDetail.betQuery // 從遊戲取得api路徑
+      apiURL = `https://${parent.Entry.getDetail.betQuery}` // 從遊戲取得api路徑
       gameCode = parent.Entry.getDetail.gameCode
       gameLanguage = parent.Entry.getDetail.gameLanguage
       gameToken = parent.Entry.getDetail.gameToken
