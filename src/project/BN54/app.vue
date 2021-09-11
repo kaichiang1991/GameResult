@@ -24,7 +24,7 @@ export default {
   },
   created(){
     /** 專案初始化設定 */
-    if(this.openMode === 'game'){
+    if(this.openMode === 'game' && process.env.NODE_ENV === 'development'){
       // 遊戲內部開啟細單
       this.$store.commit('APP_TOKEN', this.gameToken);
     }
