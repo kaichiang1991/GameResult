@@ -20,6 +20,7 @@ build:
   only:
     - master  # 僅master分支時進行打包
   script:
+    - export
     - npm install
     - npm run build
     - mv dist "$CI_PROJECT_TITLE"       # 移動到根目錄下，方便artifacts下載的時候路徑簡單
