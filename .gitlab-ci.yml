@@ -3,6 +3,10 @@
 # https://hub.docker.com/r/library/node/tags/
 image: node:14
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 # This folder is cached between builds
 # http://docs.gitlab.com/ee/ci/yaml/README.html#cache
 cache:
@@ -17,8 +21,6 @@ stages:
 build:
   stage: build
   environment: release
-  only:
-    - master  # 僅master分支時進行打包
   script:
     - npm install
     - npm run build

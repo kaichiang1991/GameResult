@@ -115,7 +115,23 @@ export default {
       top: 20px;
     }
     .wrap{
-      padding: 10px;
+      padding: 10px 0;
+    }
+  }
+}
+@media only screen and (max-width: 420px){
+  .screenInfo{
+    .collapse{
+      top: 20px;
+      right: 10px;
+    }
+    .info{
+      .gametype{
+        font-size: $fz-min;
+      }
+      li{
+        font-size: $fz-tiny;
+      }
     }
   }
 }
