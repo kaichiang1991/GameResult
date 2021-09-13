@@ -350,7 +350,7 @@ export default {
         }
       }
       .dataTime{
-        .el-date-editor.el-input{
+        .el-input{
           width: 120px;
         }
       }
@@ -433,6 +433,24 @@ export default {
         top: auto;
         text-align: center;
         margin: 10% auto;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 420px){
+  .header{
+    .form-style{
+      .dataTime{
+        .el-input{
+          width: 105px;
+        }
+        /deep/.el-input__prefix{
+          display: none !important; 
+        }
+        /deep/.el-input__inner{
+          padding: 0 5px;
+          text-align: center;
+        }
       }
     }
   }

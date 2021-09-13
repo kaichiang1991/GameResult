@@ -112,4 +112,22 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 420px){
+  .lineInfo{
+    padding: 20px 10px;
+    .list{
+      table{
+        th{
+          font-size: $fz-tiny;
+        }
+        td{
+          font-size: $fz-min;
+        }
+        .symbol{
+          width: 45px;
+        }
+      }
+    }
+  }
+}
 </style>

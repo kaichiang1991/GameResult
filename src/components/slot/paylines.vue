@@ -57,7 +57,7 @@ export default {
   .lines{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     align-content: center;

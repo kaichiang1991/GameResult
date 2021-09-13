@@ -191,6 +191,9 @@ export default {
   h1{
     font-size: $fz-sub;
   }
+  h2{
+    font-size: $fz-primary;
+  }
   .table-style{
     margin: 10px auto 30px;
   }
@@ -268,6 +271,31 @@ export default {
     td{
       span{
         font-size: $fz-min;
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px){
+  #detail{
+    h1,h2{
+      padding: 8px 5px;
+    }
+    h2{
+      font-size: $fz-primary;
+    }
+  }
+	.table-style{
+    th{
+      font-size: $fz-tiny;
+    }
+    td{
+      span{
+        font-size: $fz-tiny;
+      }
+    }
+    &.summary{
+      td{
+        font-size: $fz-tiny;
       }
     }
   }
