@@ -3,6 +3,10 @@
 # https://hub.docker.com/r/library/node/tags/
 image: node:14
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 # This folder is cached between builds
 # http://docs.gitlab.com/ee/ci/yaml/README.html#cache
 cache:
@@ -17,10 +21,7 @@ stages:
 build:
   stage: build
   environment: release
-  only:
-    - master  # 僅master分支時進行打包
   script:
-    - export
     - npm install
     - npm run build
     - mv dist "$CI_PROJECT_TITLE"       # 移動到根目錄下，方便artifacts下載的時候路徑簡單
