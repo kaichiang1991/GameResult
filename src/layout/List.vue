@@ -388,6 +388,7 @@ export default {
   }
   .data-list{
     text-align: left;
+    padding-bottom: 45px;
     ._head{
       display: none;
     }
