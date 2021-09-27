@@ -13,7 +13,7 @@ export default {
   },
   data(){
     return{
-      gameToken: '16c2f3a8bc5d4d09a5c6bf67b27489fc', // 本地端開發token
+      gameToken: '69b21c5292d946d999692c6d8d7e997a', // 本地端開發token
       multiple: 0.5 // 押注乘數基本分
     }
   },

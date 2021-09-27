@@ -16,7 +16,7 @@
           </td>
           <td>{{ list.symbol_count }}</td>
           <td><img class="symbol" :src="require(`@img/${gameID}/${list.symbol_id}.png`)" alt=""></td>
-          <td>{{ list.multiplier }}</td>
+          <td>{{ list.info_multiplier }}</td>
           <td>{{ list.cash }}</td>
         </tr>
       </table>

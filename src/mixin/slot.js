@@ -51,10 +51,11 @@ export default {
       }
     },
     /** 整理線獎資料 */
-    lineData(data){
-      return data.map(winline=>{
+    lineData(winData, info_multiplier){
+      return winData.map(winline=>{
         return{
-          cash: Number(Decimal.mul(Decimal.div(winline.win, this.summary.money_fraction_multiple), winline.multiplier)),
+          cash: Number(Decimal.mul(Decimal.div(winline.win, this.summary.money_fraction_multiple), info_multiplier)),
+          info_multiplier,
           ...winline
         }
       })
@@ -72,10 +73,11 @@ export default {
         data.game_state_type === gtype ? times++ : times=1
         data.times = times
         gtype = data.game_state_type
+        const info_multiplier = data.info.multiplier
         return {
           infos: this.infoData(data),
           screens: this.screenData(data.info),
-          lines: this.lineData(data.info.win_line_infos),
+          lines: this.lineData(data.info.win_line_infos, info_multiplier),
         }
       })
     },
