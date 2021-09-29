@@ -14,7 +14,6 @@ export default {
   data(){
     return{
       gameToken: 'f67e8ddef23542f78ce7fc5b616e3d51', // 本地端開發token
-      multiple: 0.5 // 押注乘數基本分
     }
   },
   computed: {
@@ -25,10 +24,8 @@ export default {
   created(){
     /** 專案初始化設定 */
     if(this.openMode === 'game' && process.env.NODE_ENV === 'development'){
-      // 遊戲內部開啟細單
       this.$store.commit('APP_TOKEN', this.gameToken);
     }
-    this.$store.commit('SET_MULTIPLE', this.multiple);
   }
 }
 </script>

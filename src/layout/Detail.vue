@@ -133,8 +133,9 @@ export default {
       }
 
       const data = await platform_detail(params)
-      const { currency_code, game_code, user_name, money_fraction_multiple, spin_summary:{ round_code, denom, bet_time, end_time, bet, win, bet_multiple } } = data
+      const { currency_code, bet_base, game_code, user_name, money_fraction_multiple, spin_summary:{ round_code, denom, bet_time, end_time, bet, win, bet_multiple } } = data
       this.$store.commit('SET_GAMEID', game_code);
+      this.$store.commit('SET_MULTIPLE', bet_base); // 押注乘數基本分
       this.info = {
         roundId: round_code,
         account: user_name,
@@ -228,6 +229,9 @@ export default {
 }
 @media screen and (max-width: 1000px){
   #detail{
+    h1,h2{
+      padding: 8px 10px;
+    }
     padding: 60px 2.5%;
     .table-style.summary{
       thead{

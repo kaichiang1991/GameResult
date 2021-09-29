@@ -115,10 +115,13 @@ export default {
   methods: {
     /** 格式化資訊 */
     async dataFormat(res) {
+
       if(!this.userName){
         this.userName = res.user_name
         this.gameName = await getGameName(this.gameID, this.language)
       }
+
+      this.$store.commit('SET_MULTIPLE', res.bet_base); // 押注乘數基本分
 
       // 列表資料
       const rowlist = res.spin_summarys.slice(0)

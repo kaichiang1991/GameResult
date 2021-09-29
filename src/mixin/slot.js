@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState({
-      multiple: state => state.multiple,
+      multiple: state => state.multiple,  // 押注乘數基分
     }),
   },
   methods: {
